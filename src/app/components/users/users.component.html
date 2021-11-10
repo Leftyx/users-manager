@@ -1,0 +1,104 @@
+<div class="dg-wrapper">
+  <div class="clr-row">
+    <div class="clr-col-8">
+      <h3>Users</h3>
+    </div>
+    <div class="clr-col-4" style="text-align: right;">
+      <button class="btn btn-outline" (click)="onAdd()">
+        <clr-icon shape="add"></clr-icon> Add
+      </button>
+    </div>
+  </div>
+
+  <input id="search-box" type="text" placeholder="Search" aria-label="Search" autofocus>
+
+  <clr-datagrid [clrDgLoading]="loading" *ngIf="users$ | async as users">
+    <clr-dg-placeholder>users not found!</clr-dg-placeholder>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Role</clr-dg-column>
+    <clr-dg-column>&nbsp;</clr-dg-column>
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.role}}</clr-dg-cell>
+      <clr-dg-cell>
+        <button class="btn btn-icon btn-primary" aria-label="edit" (click)="onEdit(user)">
+          <clr-icon shape="edit"></clr-icon>
+        </button>
+        <button class="btn btn-icon btn-danger" aria-label="delete" (click)="onDelete(user)">
+          <clr-icon shape="delete"></clr-icon>
+        </button>
+      </clr-dg-cell>
+      <clr-dg-action-overflow>
+        <button class="action-item" (click)="onEdit(user)">Edit</button>
+        <button class="action-item" (click)="onDelete(user)">Delete</button>
+      </clr-dg-action-overflow>
+    </clr-dg-row>
+    <!-- <clr-dg-footer>
+      <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} users
+      </clr-dg-pagination>
+    </clr-dg-footer> -->
+  </clr-datagrid>
+</div>
+
+<clr-modal [(clrModalOpen)]="showModal" [clrModalSize]="'lg'" [clrModalStaticBackdrop]="true">
+  <h3 class="modal-title">User Edit</h3>
+  <div class="modal-body" *ngIf="currentUser">
+    <form clrForm>
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput type="text" placeholder="Name" [(ngModel)]="currentUser.name" name="name" required minlength="3" maxlength="100" />
+        <clr-control-helper>This field is required!</clr-control-helper>
+      </clr-input-container>
+
+      <clr-select-container *ngIf="roles$ | async as roles">
+        <label>Role</label>
+        <select clrSelect name="roles" required [(ngModel)]="currentUser.role">
+          <option *ngFor="let role of roles" [ngValue]="role.name">{{ role.name }}</option>
+        </select>
+        <clr-control-helper>Choose a role?</clr-control-helper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-select-container>
+
+      <clr-checkbox-container>
+        <label>Enabled</label>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox name="user-enabled" [(ngModel)]="currentUser.enabled" />
+          <label>Is enabled</label>
+        </clr-checkbox-wrapper>
+        <clr-control-helper>Is user enabled ?</clr-control-helper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-checkbox-container>
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="openConfirmModal">
+  <h3 class="modal-title">Delete User</h3>
+  <div class="modal-body">
+    <p>Are you sure you want to delete the user ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="openConfirmModal = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="onConfirmDelete()">Ok</button>
+  </div>
+</clr-modal>
+
+<clr-alert *ngIf="alert" [clrAlertType]="alert.type" [clrAlertClosable]="true">
+  <clr-alert-item>
+    <span class="alert-text">
+      {{alert.message}}
+    </span>
+  </clr-alert-item>
+</clr-alert>
+

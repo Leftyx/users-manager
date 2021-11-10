@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "usersmanager-b307h"
+  },
+  "targets": {
+    "usersmanager-b307h": {
+      "hosting": {
+        "usersmanager": [
+          "usersmanager-b307h"
+        ]
+      }
+    }
+  }
+}

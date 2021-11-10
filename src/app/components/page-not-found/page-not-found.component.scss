@@ -1,0 +1,15 @@
+clr-icon {
+  margin-top: 8%;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
+clr-icon:hover {
+  margin-top: 8%;
+  opacity: 8.0;
+  filter: alpha(opacity=80);
+}
+
+.error {
+  color: red;
+}

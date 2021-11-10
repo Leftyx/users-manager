@@ -1,0 +1,43 @@
+<clr-main-container>
+  <clr-header class="header-5">
+    <div class="branding">
+      <a class="nav-link" routerLink="">
+        <clr-icon shape="home"></clr-icon>
+        <span class="title">Users Manager</span>
+      </a>
+    </div>
+    <div class="header-nav" [clr-nav-level]="1">
+      <a class="active nav-link nav-icon" routerLink="./users">
+        <clr-icon shape="users"></clr-icon>
+      </a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger>
+          <clr-icon shape="user"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a clrDropdownItem routerLink="about">About</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed" [clr-nav-level]="2">
+      <clr-vertical-nav-group routerLinkActive="active">
+        <clr-icon shape="users" clrVerticalNavIcon></clr-icon>
+        Users
+        <clr-vertical-nav-group-children>
+          <a clrVerticalNavLink routerLink="users" routerLinkActive="active">
+            Users
+          </a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+    </clr-vertical-nav>
+  </div>
+
+</clr-main-container>
