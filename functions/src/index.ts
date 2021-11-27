@@ -36,7 +36,6 @@ export const manageUsers = functions.https.onRequest(async (request, response) =
         return;
       }
     }
-
     response.status(400).send({ data: { success: false } });
   });
 });
