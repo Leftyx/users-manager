@@ -1,0 +1,7 @@
+{
+	"files.exclude": {
+		"**/node_modules": true
+	},
+	"window.title": "${dirty}usersmanager${separator}${activeEditorShort}${separator}${activeFolderMedium}",
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+}
