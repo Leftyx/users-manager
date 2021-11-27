@@ -5,11 +5,11 @@
 export const environment = {
   firebase: {
     projectId: 'usersmanager-b307h',
-    appId: '',
+    appId: '1:998877665544:web:1a2b33cd4ef5g6h78il9mn',
     storageBucket: 'usersmanager-b307h.appspot.com',
-    apiKey: '',
+    apiKey: 'thisisafakekey-to-make-angualar-happy',
     authDomain: 'usersmanager-b307h.firebaseapp.com',
-    messagingSenderId: '',
+    messagingSenderId: '1122334455',
   },
   production: false,
   useEmulators: true,

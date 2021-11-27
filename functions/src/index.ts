@@ -25,6 +25,7 @@ const deleteUserById = async (id: number): Promise<admin.firestore.WriteResult> 
   return result;
 };
 
+
 export const manageUsers = functions.https.onRequest(async (request, response) => {
   return corsHandler(request, response, async () => {
     functions.logger.info('Trace:', request, { structuredData: true });

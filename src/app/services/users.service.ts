@@ -16,14 +16,11 @@ import {
   updateDoc,
   DocumentReference,
   query,
-  where,
-  QueryConstraint
-} from '@angular/fire/firestore';
+  where} from '@angular/fire/firestore';
 import { EMPTY, Observable, of } from 'rxjs';
 import { Functions, httpsCallableData } from '@angular/fire/functions';
 import ShortUniqueId from 'short-unique-id';
 import { User, Role, Result, Entity } from '../models';
-import { startAt } from '@firebase/firestore';
 
 const converter: FirestoreDataConverter<User> = {
   toFirestore(user: WithFieldValue<User>): DocumentData {

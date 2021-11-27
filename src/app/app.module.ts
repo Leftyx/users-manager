@@ -19,6 +19,7 @@ import { UsersComponent } from './components/users/users.component';
 import { AboutComponent } from './components/about/about.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UsersService } from './services/users.service';
+import { ButtonComponent } from './components/button/button.component';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -32,7 +33,8 @@ export const persistenceEnabled = new Promise<boolean>(resolve => {
     LayoutComponent,
     UsersComponent,
     AboutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
