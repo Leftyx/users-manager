@@ -74,10 +74,7 @@ node_modules/
 /out-tsc
 
 # IDE - VSCode / Visual Studio
-.vs/*
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vs/**
+.vscode/**
+.vscode/settings.json
 .history/*
