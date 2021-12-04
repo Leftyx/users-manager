@@ -59,7 +59,6 @@ export class UsersService {
   }
 
   getUsers(keyWord?: string): Observable<User[]> {
-
     let usersQuery = query<User>(this.firestoreCollection);
 
     if (keyWord) {
